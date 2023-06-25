@@ -1,8 +1,8 @@
 :root {
     --main-light: #fafafa;
     --secondary-light: #e4e5f1;
-    --player-one-color: #FFBF00;
-    --player-two-color: #8CFF98;
+    --player-one-color: blue;
+    --player-two-color: red;
     --button: red;
     --crt: #2E282A;
 }
@@ -180,6 +180,15 @@ pre {
     left: 0;
     height: 100%;
     width: 100%;
+    font-size: 5rem;
+}
+
+.player1 {
+    color: var(--player-one-color);
+}
+
+.player2 {
+    color: var(--player-two-color);
 }
 
 /* --- --- --- --- --- FOOTER --- --- --- --- --- --- */
