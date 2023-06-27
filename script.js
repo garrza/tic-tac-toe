@@ -1,13 +1,26 @@
-const Gameboard = (() => {
-    let _board = [['1','2','3'],['4','5','6'],['7','8','9']];
-    const getBoard = () => {
-        return _board;
-    };
+const Player = (sign) => {
+    const getSign = () => sign;
+
+    return { getSign }
+};
+
+const gameBoard = (() =>{
+    const board = ["", "", "", "", "", "", "", "", ""];
+
+    const setField = (index, sign) => {
+        board[index] = sign;
+    }
+
+    const getField = (index) => {
+        return board[index];
+    }
+
     const resetBoard = () => {
-        _board = [['1','2','3'],['4','5','6'],['7','8','9']]; 
-    };
-    const setBoardVal = (i, j, val)  => {
-        _board[i,j] = val
-    };
-    
+        for (let i = 0; i < board.length; i++) {
+            board[i] = "";
+        }
+    }
+
+    return { setField, getField, resetBoard };
 })();
+
