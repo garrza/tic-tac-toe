@@ -213,7 +213,7 @@ pre {
     font-family: 'Permanent Marker';
 }
 
-.reset {
+#reset {
     border-radius: 50%; 
     width: 3rem;
     height: 3rem;
@@ -225,7 +225,7 @@ pre {
     cursor: pointer;
 }
 
-.reset:hover {
+#reset:hover {
     transition: .4s all ease-in;
     box-shadow: none;
 }
