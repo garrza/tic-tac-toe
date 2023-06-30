@@ -174,13 +174,17 @@ pre {
     padding-top: 100%;
 }
 
-.grid-element .content {
+.grid-element .space {
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
     width: 100%;
     font-size: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: blue;
 }
 
 .player1 {
