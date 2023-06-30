@@ -37,6 +37,7 @@ const displayGame = (() => {
         })
     );
 
+
     resetButton.addEventListener("click", (e) => {
         gameBoard.reset();
         gameFlow.reset();
@@ -47,6 +48,9 @@ const displayGame = (() => {
     const updateGameboard = () => {
         for (let i = 0; i < spaces.length; i++) {
             spaces[i].textContent = gameBoard.getField(i);
+            spaces[i].textContent === "X"
+                ? spaces[i].setAttribute("style", "color:blue")
+                : spaces[i].setAttribute("style", "color:red");
         }
     };
 
@@ -84,7 +88,7 @@ const gameFlow = (() => {
             return;
         }
         round++;
-        displayGame.setMessageElement(`Player ${getCurrentPlayerSign()}'s turn`);
+        displayGame.setMessageElement(`Player ${currentPlayerSign()}'s turn`);
     };
 
     const currentPlayerSign = () => {
