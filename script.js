@@ -4,6 +4,45 @@ const Player = (sign) => {
     return { getSign };
 };
 
+const gameAudio = (() => {
+    let buttonSound = new Audio("./sound/button.mp3");
+
+    let checks = [
+        new Audio("./sound/key1.mp3"),
+        new Audio("./sound/key2.mp3"),
+        new Audio("./sound/key3.mp3"),
+        new Audio("./sound/key4.mp3")
+    ];
+
+    let winSounds = [
+        new Audio("./sound/1.wav"),
+        new Audio("./sound/2.wav"),
+        new Audio("./sound/3.wav"),
+        new Audio("./sound/4.wav"),
+        new Audio("./sound/5.wav"),
+        new Audio("./sound/6.wav"),
+        new Audio("./sound/7.wav")
+    ];
+
+    const button = () => {
+        buttonSound.play();
+    };
+
+    const check = () => {
+        let i = Math.floor(Math.random() * checks.length);
+        checks[i].currentTime = 0;
+        checks[i].play();
+    };
+
+    const victory = () => {
+        let i = Math.floor(Math.random() * winSounds.length);
+        winSounds[i].currentTime = 0;
+        winSounds[i].play();
+    }
+    return { button, check, victory };
+})();
+
+
 const gameBoard = (() => {
     const board = ["", "", "", "", "", "", "", "", ""];
 
@@ -34,11 +73,13 @@ const displayGame = (() => {
             if (gameFlow.getIsOver() || e.target.textContent !== "") return;
             gameFlow.playRound(parseInt(e.target.dataset.index));
             updateGameboard();
+            gameAudio.check();
         })
     );
 
 
     resetButton.addEventListener("click", (e) => {
+        gameAudio.button();
         gameBoard.reset();
         gameFlow.reset();
         updateGameboard();
@@ -80,6 +121,7 @@ const gameFlow = (() => {
         if (checkWinner(fieldIndex)) {
             displayGame.setResultMessage(currentPlayerSign());
             isOver = true;
+            gameAudio.victory();
             return;
         }
         if (round === 9) {
